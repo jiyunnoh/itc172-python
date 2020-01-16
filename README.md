@@ -1,1 +1,1 @@
-# itc222-SQL
+# itc172-python
