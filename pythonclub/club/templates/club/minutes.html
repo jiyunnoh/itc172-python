@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Meeting Minutes</h1>
+<table class='table'>
+    <tr>
+        <th>ID</th>
+        <th>Attendance</th>
+        <th>Minutes Text</th>
+    </tr>
+{% for m in minutes_list %}
+    <tr>
+        <td>{{ m.meetingid }}</td>
+        <td>{{ m.attendance }}</td>
+        <td>{{ m.minutestext }}</td>
+    </tr>
+{% endfor %}
+</table>
+
+{% endblock %}
