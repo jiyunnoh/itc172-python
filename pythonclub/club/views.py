@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Meeting, MeetingMinutes, Resource, Event
 
 # Create your views here.
@@ -20,3 +20,12 @@ def getresources(request):
 def getevent(request):
     event_list = Event.objects.all()
     return render(request, 'club/events.html', {'event_list': event_list})
+
+def meetingdetails(request, id):
+    meet = get_object_or_404(Meeting, pk=id)
+    minutes = MeetingMinutes.objects.filter(meetingid=id).count()
+    context = {
+        'meet': meet,
+        'minutes': minutes,
+    } 
+    return render(request, 'club/meetingdetails.html', context = context)
