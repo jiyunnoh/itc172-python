@@ -1,3 +1,6 @@
+#It registers the models with the admin site so they can be seen and edited there
+
+
 from django.contrib import admin
 # from .models import ProductType, Product, Review
 from .models import Meeting, MeetingMinutes, Resource, Event

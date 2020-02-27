@@ -88,7 +88,7 @@ class MeetingMinutes(models.Model):
 class Resource(models.Model):
     resourcename = models.CharField(max_length=255)
     resourcetype = models.CharField(max_length=255)
-    resourceurl = models.URLField(null='True', blank='Ture')
+    resourceurl = models.URLField(null='True', blank='True')
     dateentered = models.DateField()
     userid = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     resourcedescription = models.TextField()
