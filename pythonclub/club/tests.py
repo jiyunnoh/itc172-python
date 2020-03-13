@@ -38,3 +38,20 @@ class EventTest(TestCase):
 
     def test_table(self):
         self.assertEqual(str(Event._meta.db_table), 'event')
+
+class New_Product_authentication_test(TestCase):
+    def setup(self):
+        self.test_user = User.objects.create_user(username='testuser1', password='P@ssw0rd1')
+        self.meet = Meeting.objects.create(meetingname='testmeeting1')
+        self.resrc = Resource.objects.create(resourcename='testresrc1', resourcetype='resrctype1')
+
+    def test_redirect_if_not_logged_in(self):
+        response = self.client.get(reverse('newmeeting'))
+        self.assertRedirects(response, '/accounts/login/?next=/club/newmeeting/')
+    
+    def test_Logged_in_uses_correct_template(self):
+        login=self.client.login(username='testuser1', password='P@ssw0rd1')
+        response=self.client.get(reverse('newmeeting'))
+        self.assertEqual(str(response.context['user']), 'testuser1')
+        self.assertEqual(response.status_code, 200)
+        self.assertTemplateUsed(response, 'club/newmeeting.html')
