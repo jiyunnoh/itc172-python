@@ -1,5 +1,8 @@
 from django.test import TestCase
 from .models import Meeting, MeetingMinutes, Resource, Event
+from .views import index, gettypes, getproducts
+from django.urls import reverse
+from django.contrib.auth.models import User
 
 # Create your tests here.
 class MeetingTest(TestCase):
